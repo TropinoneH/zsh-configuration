@@ -1,64 +1,4 @@
-# use history in .zsh_history
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=100000
-SAVEHIST=100000
-setopt appendhistory
-setopt hist_ignore_dups       # ignore duplicated commands history list
-setopt hist_ignore_space      # ignore commands that start with space
-setopt hist_verify            # show command with history expansion to user before running it
-setopt share_history          # share command history data
 
-# zsh themes
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="agnosterzak"
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-source $HOME/.zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
-
-# plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
-# plugins and configurations
-source $HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.zsh/plugins/history/history.plugin.zsh
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
-source $HOME/.zsh/plugins/git/git.plugin.zsh
-
-# auto suggestions history configuration
-# [PageUp] - Up a line of history
-if [[ -n "${terminfo[kpp]}" ]]; then
-  bindkey -M emacs "${terminfo[kpp]}" up-line-or-history
-  bindkey -M viins "${terminfo[kpp]}" up-line-or-history
-  bindkey -M vicmd "${terminfo[kpp]}" up-line-or-history
-fi
-# [PageDown] - Down a line of history
-if [[ -n "${terminfo[knp]}" ]]; then
-  bindkey -M emacs "${terminfo[knp]}" down-line-or-history
-  bindkey -M viins "${terminfo[knp]}" down-line-or-history
-  bindkey -M vicmd "${terminfo[knp]}" down-line-or-history
-fi
-# Start typing + [Up-Arrow] - fuzzy find history forward
-bindkey -e
-autoload -U up-line-or-beginning-search
-zle -N up-line-or-beginning-search
-bindkey -M emacs "^[[A" up-line-or-beginning-search
-bindkey -M viins "^[[A" up-line-or-beginning-search
-bindkey -M vicmd "^[[A" up-line-or-beginning-search
-if [[ -n "${terminfo[kcuu1]}" ]]; then
-  bindkey -M emacs "${terminfo[kcuu1]}" up-line-or-beginning-search
-  bindkey -M viins "${terminfo[kcuu1]}" up-line-or-beginning-search
-  bindkey -M vicmd "${terminfo[kcuu1]}" up-line-or-beginning-search
-fi
-# Start typing + [Down-Arrow] - fuzzy find history backward
-autoload -U down-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey -M emacs "^[[B" down-line-or-beginning-search
-bindkey -M viins "^[[B" down-line-or-beginning-search
-bindkey -M vicmd "^[[B" down-line-or-beginning-search
-if [[ -n "${terminfo[kcud1]}" ]]; then
-  bindkey -M emacs "${terminfo[kcud1]}" down-line-or-beginning-search
-  bindkey -M viins "${terminfo[kcud1]}" down-line-or-beginning-search
-  bindkey -M vicmd "${terminfo[kcud1]}" down-line-or-beginning-search
-fi
 
 # rust
 export CARGO_HOME="$HOME/.cargo"
@@ -105,6 +45,70 @@ alias untar="tar -zxvf"
 alias untarxz="tar -xvf"
 # special for CS110
 alias logisim="java -jar $AppFolder/logisim/logisim-evolution.jar"
+
+# use history in .zsh_history
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt appendhistory
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history          # share command history data
+
+# zsh themes
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="agnosterzak"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+source $HOME/.zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
+
+# plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+# plugins and configurations
+export PLUGINS=$HOME/.zsh/plugins
+export THEMES=$HOME/.zsh/themes
+source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $PLUGINS/history/history.plugin.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+source $PLUGINS/git/git.plugin.zsh
+
+# auto suggestions history configuration
+bindkey -e
+# [PageUp] - Up a line of history
+if [[ -n "${terminfo[kpp]}" ]]; then
+  bindkey -M emacs "${terminfo[kpp]}" up-line-or-history
+  bindkey -M viins "${terminfo[kpp]}" up-line-or-history
+  bindkey -M vicmd "${terminfo[kpp]}" up-line-or-history
+fi
+# [PageDown] - Down a line of history
+if [[ -n "${terminfo[knp]}" ]]; then
+  bindkey -M emacs "${terminfo[knp]}" down-line-or-history
+  bindkey -M viins "${terminfo[knp]}" down-line-or-history
+  bindkey -M vicmd "${terminfo[knp]}" down-line-or-history
+fi
+# Start typing + [Up-Arrow] - fuzzy find history forward
+autoload -U up-line-or-beginning-search
+zle -N up-line-or-beginning-search
+bindkey -M emacs "^[[A" up-line-or-beginning-search
+bindkey -M viins "^[[A" up-line-or-beginning-search
+bindkey -M vicmd "^[[A" up-line-or-beginning-search
+if [[ -n "${terminfo[kcuu1]}" ]]; then
+  bindkey -M emacs "${terminfo[kcuu1]}" up-line-or-beginning-search
+  bindkey -M viins "${terminfo[kcuu1]}" up-line-or-beginning-search
+  bindkey -M vicmd "${terminfo[kcuu1]}" up-line-or-beginning-search
+fi
+# Start typing + [Down-Arrow] - fuzzy find history backward
+autoload -U down-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey -M emacs "^[[B" down-line-or-beginning-search
+bindkey -M viins "^[[B" down-line-or-beginning-search
+bindkey -M vicmd "^[[B" down-line-or-beginning-search
+if [[ -n "${terminfo[kcud1]}" ]]; then
+  bindkey -M emacs "${terminfo[kcud1]}" down-line-or-beginning-search
+  bindkey -M viins "${terminfo[kcud1]}" down-line-or-beginning-search
+  bindkey -M vicmd "${terminfo[kcud1]}" down-line-or-beginning-search
+fi
 
 # Welcome message
 figlet "Hi, Tropinone!" | lolcat
