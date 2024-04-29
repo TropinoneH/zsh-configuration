@@ -81,3 +81,13 @@ function work_in_progress() {
   command git -c log.showSignature=false log -n 1 2>/dev/null | grep -q -- "--wip--" && echo "WIP!!"
 }
 
+# my alias
+
+alias gcm="git commit -m"
+alias gl="git log --oneline"
+alias gp="git push"
+alias gpl="git pull"
+alias gaa="git add ."
+alias gfx="git commit --fixup"
+alias gi="git init"
+alias gb="git branch"
