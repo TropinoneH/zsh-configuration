@@ -1,10 +1,8 @@
-
-
 # rust
 export CARGO_HOME="$HOME/.cargo"
 # cuda
-export LD_LIBRARY_PATH=/usr/local/cuda-12.2/lib64:/usr/local/applications/Qt/6.6.0/gcc_64/lib:$LD_LIBRARY_PATH
-export CUDA_HOME=/usr/local/cuda-12.2
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export CUDA_HOME=/usr/local/cuda
 # Qt
 export QT_PLUGIN_PATH=/usr/local/applications/Qt/6.6.0/gcc_64/plugins:$QT_PLUGIN_PATH
 export QML2_IMPORT_PATH=/usr/local/applications/Qt/6.6.0/gcc_64/qml:$QML2_IMPORT_PATH
@@ -15,100 +13,20 @@ export GOPATH=$HOME/go
 export DOTNET_PATH=$HOME/.dotnet
 # PATH
 export PATH=$CARGO_HOME/bin:$GOROOT/bin:$DOTNET_PATH:$CUDA_HOME/bin:/usr/local/applications/Qt/6.6.0/gcc_64/bin:/usr/local/applications/jetbrains/clion/bin/cmake/linux/x64/bin:$PATH
-AppFolder="/usr/local/applications"
 
-# System command
-alias rm=rm2trash
-alias ls="logo-ls"
-alias ll="ls -al"
-alias cls="clear"
-alias t="tree"
-# apt command
-alias update="sudo apt update"
-alias upgrade="sudo apt upgrade"
-alias uninstall="sudo apt-get remove --purge"
-alias i="sudo apt-get install"
+
+# my AppFolder
+AppFolder="/usr/local/applications"
 # jetbrains command
 alias pycharm="$AppFolder/jetbrains/pycharm/bin/pycharm.sh"
 alias clion="$AppFolder/jetbrains/clion/bin/clion.sh"
 alias webstorm="$AppFolder/jetbrains/webstorm/bin/webstorm.sh"
 alias intellij="$AppFolder/jetbrains/intellij/bin/intellij.sh"
 alias goland="$AppFolder/jetbrains/goland/bin/goland.sh"
-# core command
-alias cpu="sudo dmidecode -t 4 | grep ID"
-alias serial="sudo dmidecode -t 2 | grep Serial"
-alias mac="sudo lshw -c network | grep serial | head -n 1"
-alias core="sudo uname -r"
-alias neofetch="fastfetch"
-# utils
-alias untar="tar -zxvf"
-alias untarxz="tar -xvf"
 # special for CS110
 alias logisim="java -jar $AppFolder/logisim/logisim-evolution.jar"
 
-# use history in .zsh_history
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=100000
-SAVEHIST=100000
-setopt appendhistory
-setopt hist_ignore_dups       # ignore duplicated commands history list
-setopt hist_ignore_space      # ignore commands that start with space
-setopt hist_verify            # show command with history expansion to user before running it
-setopt share_history          # share command history data
-
-# zsh themes
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="agnosterzak"
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-source $HOME/.zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
-
-# plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
-# plugins and configurations
-export PLUGINS=$HOME/.zsh/plugins
-export THEMES=$HOME/.zsh/themes
-source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $PLUGINS/history/history.plugin.zsh
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
-source $PLUGINS/git/git.plugin.zsh
-
-# auto suggestions history configuration
-bindkey -e
-# [PageUp] - Up a line of history
-if [[ -n "${terminfo[kpp]}" ]]; then
-  bindkey -M emacs "${terminfo[kpp]}" up-line-or-history
-  bindkey -M viins "${terminfo[kpp]}" up-line-or-history
-  bindkey -M vicmd "${terminfo[kpp]}" up-line-or-history
-fi
-# [PageDown] - Down a line of history
-if [[ -n "${terminfo[knp]}" ]]; then
-  bindkey -M emacs "${terminfo[knp]}" down-line-or-history
-  bindkey -M viins "${terminfo[knp]}" down-line-or-history
-  bindkey -M vicmd "${terminfo[knp]}" down-line-or-history
-fi
-# Start typing + [Up-Arrow] - fuzzy find history forward
-autoload -U up-line-or-beginning-search
-zle -N up-line-or-beginning-search
-bindkey -M emacs "^[[A" up-line-or-beginning-search
-bindkey -M viins "^[[A" up-line-or-beginning-search
-bindkey -M vicmd "^[[A" up-line-or-beginning-search
-if [[ -n "${terminfo[kcuu1]}" ]]; then
-  bindkey -M emacs "${terminfo[kcuu1]}" up-line-or-beginning-search
-  bindkey -M viins "${terminfo[kcuu1]}" up-line-or-beginning-search
-  bindkey -M vicmd "${terminfo[kcuu1]}" up-line-or-beginning-search
-fi
-# Start typing + [Down-Arrow] - fuzzy find history backward
-autoload -U down-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey -M emacs "^[[B" down-line-or-beginning-search
-bindkey -M viins "^[[B" down-line-or-beginning-search
-bindkey -M vicmd "^[[B" down-line-or-beginning-search
-if [[ -n "${terminfo[kcud1]}" ]]; then
-  bindkey -M emacs "${terminfo[kcud1]}" down-line-or-beginning-search
-  bindkey -M viins "${terminfo[kcud1]}" down-line-or-beginning-search
-  bindkey -M vicmd "${terminfo[kcud1]}" down-line-or-beginning-search
-fi
+source $HOME/.zsh/load-config.zsh
 
 # Welcome message
 figlet "Hi, Tropinone!" | lolcat
@@ -119,108 +37,9 @@ figlet "Hi, Tropinone!" | lolcat
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-function proxy_on() {
-    local server=${1:-"127.0.0.1"}
-    local port=${2:-7890}
-    export http_proxy=http://$server:$port
-    export https_proxy=\$http_proxy
-    echo -e "终端代理已开启。"
-}
-
-function proxy_off() {
-    unset http_proxy https_proxy
-    echo -e "终端代理已关闭。"
-}
-
-function clean_trash() {
-    local force=""
-    local recursive=""
-    local target="$HOME/.trash"
-
-    # Parse options
-    while getopts ":fr" opt; do
-        case $opt in
-            f)
-                force="-f"
-                ;;
-            r)
-                recursive="-r"
-                ;;
-            \?)
-                echo "Invalid option: -$OPTARG" >&2
-                ;;
-        esac
-    done
-    shift $((OPTIND - 1))
-
-    if [ -n "$1" ]; then
-        # Remove specific file/directory from trash
-        /bin/rm "$force" "$recursive" "$target/$1"
-        echo "Removed '$target/$1'"
-    else
-        # Remove all files/directories from trash
-        /bin/rm "$force" "$recursive" $target
-        mkdir -p $target
-        echo "Removed all files/directories from '$target'"
-    fi
-}
-
-function rm2trash() {
-    local silent=false
-
-    # Parse options
-    while getopts ":m" opt; do
-        case $opt in
-
-            m)
-                silent=true
-                ;;
-            \?)
-                echo "Invalid option: -$OPTARG" >&2
-                ;;
-        esac
-    done
-    shift $((OPTIND - 1))
-
-    # Check if ~/.trash directory exists, if not, create it
-    if [ ! -d ~/.trash ]; then
-        mkdir -p ~/.trash
-    fi
-    
-    # Move each file/directory to ~/.trash
-    for item in "$@"; do
-        # Get the absolute path of the file/directory to be deleted
-        abs_path=$(realpath "$item")
-
-        # Extract the relative path
-        rel_path=${abs_path#"$HOME"/}
-
-        # Replace slashes with underscores in the relative path to avoid conflicts
-        rel_path_underscore=$(echo "$rel_path" | tr '/' '_')
-
-        # If the first character of rel_path_underscore is '_', remove it
-        if [ "${rel_path_underscore:0:1}" = "_" ]; then
-            rel_path_underscore="${rel_path_underscore:1}"
-        fi
-
-        # Generate a unique filename for the trash
-        timestamp=$(date +%s)
-        trash_file="$HOME/.trash/$rel_path_underscore.$timestamp"
-
-        # Move the file/directory to ~/.trash
-        mv "$abs_path" "$trash_file"
-
-        # Echo message each epoch
-        if [ "$silent" = false ]; then
-            echo "Moved '$abs_path' to '$trash_file'"
-        fi
-    done
-}
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$($HOME/miniconda3/bin/conda 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
