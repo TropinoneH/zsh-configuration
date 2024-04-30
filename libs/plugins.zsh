@@ -12,3 +12,4 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 source $PLUGINS/git/git.plugin.zsh
 
 source $PLUGINS/zsh-z/zsh-z.plugin.zsh
+autoload -U compinit; compinit
