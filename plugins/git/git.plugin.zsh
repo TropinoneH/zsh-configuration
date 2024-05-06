@@ -83,6 +83,7 @@ function work_in_progress() {
 
 # my alias
 
+alias gc="git clone"
 alias gcm="git commit -m"
 alias gl="git log --oneline"
 alias gp="git push"
