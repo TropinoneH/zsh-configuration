@@ -1,0 +1,37 @@
+#compdef clean_trash
+# Autocompletion script for clean_trash function
+local function _clean_trash() {
+    local expl # local variable to store descriptions
+
+    # Define options for completion, allowing -f and -r to appear multiple times anywhere
+    _arguments -s -C \
+        '*-f[force delete]' \
+        '*-r[recursive delete]' \
+        '*::file to delete:_trash_files' \
+        && return
+
+    return 0
+}
+
+# Function to complete files from $HOME/.trash
+local function _trash_files() {
+    local -a files
+    local IFS=$'\n' # handle spaces in filenames
+    # Get all files from $HOME/.trash
+    files=($(ls -A "$HOME/.trash"))
+
+    # Exclude any options that are being completed
+    local -a opts
+    zparseopts -D -a opts f r
+
+    # Exclude already specified files from completion options
+    local word
+    for word in ${words[@]}; do
+        [[ "$word" == -* ]] && continue
+        files=(${files:#$word})
+    done
+
+    _describe -t files 'file in trash' files
+}
+
+_clean_trash "$@"
