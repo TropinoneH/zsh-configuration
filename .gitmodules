@@ -10,3 +10,6 @@
 [submodule "plugins/zsh-z"]
 	path = plugins/zsh-z
 	url = git@github.com:agkozak/zsh-z.git
+[submodule "custom/plugins/zsh-trashz"]
+	path = custom/plugins/zsh-trashz
+	url = git@github.com:TropinoneH/zsh-trashz.git
