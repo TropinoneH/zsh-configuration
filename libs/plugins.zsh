@@ -10,7 +10,7 @@ source $PLUGINS/history/history.plugin.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 
-source $ZSH_CUSTOM/plugins/trashz/trashz.plugin.zsh
+source $ZSH_CUSTOM/plugins/zsh-trashz/trashz.plugin.zsh
 
 source $PLUGINS/git/git.plugin.zsh
 
