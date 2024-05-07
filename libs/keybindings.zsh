@@ -61,3 +61,7 @@ bindkey -M emacs '^[[1;5D' backward-word
 bindkey -M viins '^[[1;5D' backward-word
 bindkey -M vicmd '^[[1;5D' backward-word
 
+# [Ctrl-d] - delete whole line
+bindkey -M emacs '^D' kill-whole-line
+bindkey -M viins '^D' kill-whole-line
+bindkey -M vicmd '^D' kill-whole-line
