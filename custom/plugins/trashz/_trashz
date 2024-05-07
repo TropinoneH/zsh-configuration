@@ -1,22 +1,62 @@
-#compdef clean_trash
-# Autocompletion script for clean_trash function
-local function _clean_trash() {
-    local expl # local variable to store descriptions
+#compdef trashz
 
-    # Define options for completion, allowing -f and -r to appear multiple times anywhere
-    _arguments -s -C \
-        '*-f[force delete]' \
-        '*-r[recursive delete]' \
-        '*::file to delete:_trash_files' \
-        && return
+_trashz() {
+    local state
+    local -a subcmds
 
-    return 0
+    typeset -A opt_args
+    local curcontext="$curcontext" ret=1
+
+    _arguments -C \
+        '1: :->cmd' \
+        '*::arg:->args'
+
+    case $state in
+        (cmd)
+            subcmds=(
+                'clean:Delete files permanently'
+                'restore:Restore deleted files'
+                'rm:Move file to trash'
+                'list:List files in trash'
+            )
+            _describe 'command' subcmds
+            return
+        ;;
+    esac
+
+    case $words[1] in
+        clean)
+            # Define options for completion, allowing -f and -r to appear multiple times anywhere
+            _arguments -s -C \
+                '(-*)-f[force delete]' \
+                '(-*)-r[recursive delete]' \
+                '*::files to delete:_trash_files' \
+                && return
+        ;;
+        restore)
+            if [[ ! "$words" == *"--all"* ]]; then
+                if [[ $#words -eq 2 ]]; then
+                    _arguments -C -w \
+                        '--all[restore all files]' \
+                        '*:files to restore:_trash_files' \
+                        && return
+                else
+                    _arguments -C -w \
+                        '*:files to restore:_trash_files' \
+                        && return
+                fi
+            fi
+        ;;
+        rm)
+            _files
+        ;;
+    esac
 }
 
 # Function to complete files from $HOME/.trash
 local function _trash_files() {
     local -a files
-    local IFS=$'\n' # handle spaces in filenames
+    local IFS=$'\n'  # handle spaces in filenames
     # Get all files from $HOME/.trash
     files=($(ls -A "$HOME/.trash"))
 
@@ -34,4 +74,4 @@ local function _trash_files() {
     _describe -t files 'file in trash' files
 }
 
-_clean_trash "$@"
+_trashz

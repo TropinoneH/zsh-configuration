@@ -29,12 +29,7 @@ function rm2trash() {
         rel_path=${abs_path#"$HOME"/}
 
         # Replace slashes with underscores in the relative path to avoid conflicts
-        rel_path_underscore=$(echo "$rel_path" | tr '/' '_')
-
-        # If the first character of rel_path_underscore is '_', remove it
-        if [ "${rel_path_underscore:0:1}" = "_" ]; then
-            rel_path_underscore="${rel_path_underscore:1}"
-        fi
+        rel_path_underscore=$(echo "$rel_path" | tr '/' '__')
 
         # Generate a unique filename for the trash
         timestamp=$(date +%s)

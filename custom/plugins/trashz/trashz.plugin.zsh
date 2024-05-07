@@ -20,8 +20,11 @@ function trashz() {
             # Call the rm2trash function
             rm2trash "${@:2}"  # Pass remaining arguments
             ;;
+        list)
+            ls ~/.trash
+            ;;
         *)
-            echo "Usage: trashz {clean|restore|rm} [options]"
+            echo "Usage: trashz {clean|restore|rm|list} [options]"
             return 1
             ;;
     esac
