@@ -85,7 +85,7 @@ function work_in_progress() {
 
 alias lg="lazygit"
 
-alias gc="git clone"
+alias gc="git clone --recursive"
 alias gcm="git commit -m"
 alias gl="git log --oneline"
 alias gp="git push"
