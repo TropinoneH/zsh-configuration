@@ -18,10 +18,6 @@ alias neofetch="fastfetch"
 # utils
 alias untar="tar -zxvf"
 alias untarxz="tar -xvf"
-# plugins: trashz
-alias "tl"="trashz list"
-alias "tr"="trashz restore"
-alias "tc"="trashz clean"
 
 function proxy_on() {
     local server=${1:-"127.0.0.1"}

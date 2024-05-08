@@ -46,10 +46,6 @@ alias p='ps -f'
 alias sortnr='sort -n -r'
 alias unexport='unset'
 
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
 # zsh is able to auto-do some kungfoo
 # depends on the SUFFIX :)
 autoload -Uz is-at-least
