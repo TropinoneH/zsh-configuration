@@ -9,7 +9,7 @@
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "plugins/zsh-z"]
 	path = plugins/zsh-z
-	url = git@github.com:agkozak/zsh-z.git
+	url = https://github.com/agkozak/zsh-z.git
 [submodule "custom/plugins/zsh-trashz"]
 	path = custom/plugins/zsh-trashz
-	url = git@github.com:TropinoneH/zsh-trashz.git
+	url = https://github.com/TropinoneH/zsh-trashz.git
