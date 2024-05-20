@@ -4,6 +4,7 @@ alias ll="ls -alh"
 alias cls="clear"
 alias t="tree"
 alias fd="fdfind"
+alias sudo="sudo "
 # apt command
 alias update="sudo apt update"
 alias upgrade="sudo apt upgrade"
