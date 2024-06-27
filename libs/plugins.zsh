@@ -15,4 +15,3 @@ source $ZSH_CUSTOM/plugins/zsh-trashz/trashz.plugin.zsh
 source $PLUGINS/git/git.plugin.zsh
 
 source $PLUGINS/zsh-z/zsh-z.plugin.zsh
-autoload -U compinit; compinit
