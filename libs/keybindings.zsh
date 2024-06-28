@@ -35,12 +35,26 @@ if [[ -n "${terminfo[kcud1]}" ]]; then
   bindkey -M vicmd "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
 
+# [Home] - Go to beginning of line
+bindkey -M emacs "^[[H" beginning-of-line
+bindkey -M viins "^[[H" beginning-of-line
+bindkey -M vicmd "^[[H" beginning-of-line
+# [End] - Go to end of line
+bindkey -M emacs "^[[F"  end-of-line
+bindkey -M viins "^[[F"  end-of-line
+bindkey -M vicmd "^[[F"  end-of-line
+
 # [Shift-Tab] - move through the completion menu backwards
 if [[ -n "${terminfo[kcbt]}" ]]; then
   bindkey -M emacs "${terminfo[kcbt]}" reverse-menu-complete
   bindkey -M viins "${terminfo[kcbt]}" reverse-menu-complete
   bindkey -M vicmd "${terminfo[kcbt]}" reverse-menu-complete
 fi
+
+# [Delete]
+bindkey -M emacs "^[[3~" delete-char
+bindkey -M viins "^[[3~" delete-char
+bindkey -M vicmd "^[[3~" delete-char
 
 # [Ctrl-Delete] - delete whole forward-word
 bindkey -M emacs '^[[3;5~' kill-word
