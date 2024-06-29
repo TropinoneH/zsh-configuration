@@ -15,4 +15,6 @@ function d () {
     dirs -v | head -n 10
   fi
 }
+
+autoload -U compinit; compinit
 compdef _dirs d
