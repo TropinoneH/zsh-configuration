@@ -1,18 +1,18 @@
 [submodule "themes/powerlevel10k"]
 	path = themes/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git
+	url = git@github.com/romkatv/powerlevel10k.git
 [submodule "plugins/zsh-autosuggestions"]
 	path = plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions.git
+	url = git@github.com/zsh-users/zsh-autosuggestions.git
 [submodule "plugins/zsh-syntax-highlighting"]
 	path = plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+	url = git@github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "plugins/zsh-z"]
 	path = plugins/zsh-z
-	url = https://github.com/agkozak/zsh-z.git
+	url = git@github.com/agkozak/zsh-z.git
 [submodule "custom/plugins/zsh-trashz"]
 	path = custom/plugins/zsh-trashz
-	url = https://github.com/TropinoneH/zsh-trashz.git
+	url = git@github.com/TropinoneH/zsh-trashz.git
 [submodule "custom/plugins/fzf-tab"]
 	path = custom/plugins/fzf-tab
 	url = git@github.com:Aloxaf/fzf-tab.git
