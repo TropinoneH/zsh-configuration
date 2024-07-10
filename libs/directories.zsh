@@ -16,5 +16,4 @@ function d () {
   fi
 }
 
-autoload -U compinit; compinit
 compdef _dirs d

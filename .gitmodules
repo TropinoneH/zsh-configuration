@@ -13,3 +13,6 @@
 [submodule "custom/plugins/zsh-trashz"]
 	path = custom/plugins/zsh-trashz
 	url = https://github.com/TropinoneH/zsh-trashz.git
+[submodule "custom/plugins/fzf-tab"]
+	path = custom/plugins/fzf-tab
+	url = git@github.com:Aloxaf/fzf-tab.git

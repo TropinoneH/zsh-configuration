@@ -15,3 +15,5 @@ source $ZSH_CUSTOM/plugins/zsh-trashz/trashz.plugin.zsh
 source $PLUGINS/git/git.plugin.zsh
 
 source $PLUGINS/zsh-z/zsh-z.plugin.zsh
+
+source $ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.plugin.zsh
