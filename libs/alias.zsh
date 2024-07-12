@@ -14,7 +14,7 @@ alias cpu="sudo dmidecode -t 4 | grep ID"
 alias serial="sudo dmidecode -t 2 | grep Serial"
 alias mac="sudo lshw -c network | grep serial | head -n 1"
 alias core="sudo uname -r"
-# alias neofetch="fastfetch"
+alias neofetch="fastfetch"
 # utils
 alias untar="tar -zxvf"
 alias untarxz="tar -xvf"
