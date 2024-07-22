@@ -1,8 +1,8 @@
 # System command
-alias ls="exa --icons=always"
-alias ll="ls -alH"
+alias ls="exa --icons=always --color=always"
+alias ll="ls -alH --git"
 alias cls="clear"
-alias t="tree"
+alias t="exa --icons=always --color=always --tree"
 alias sudo="sudo "
 # apt command
 alias update="sudo pacman -Syy"
