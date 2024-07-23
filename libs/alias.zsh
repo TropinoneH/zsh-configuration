@@ -4,6 +4,7 @@ alias ll="ls -alH --git"
 alias cls="clear"
 alias t="exa --icons=always --color=always --tree"
 alias sudo="sudo "
+alias cat="bat"
 # apt command
 alias update="sudo pacman -Syy"
 alias upgrade="sudo pacman -Syyu"
