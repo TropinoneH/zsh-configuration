@@ -24,7 +24,7 @@ function proxy_on() {
     local server=${1:-"127.0.0.1"}
     local port=${2:-7890}
     export http_proxy=http://$server:$port
-    export https_proxy=https://$server:$port
+    export https_proxy=http://$server:$port
     echo -e "终端代理已开启。"
 }
 
